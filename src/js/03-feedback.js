@@ -4,14 +4,14 @@ const form = document.querySelector('.feedback-form');
 const emailInput = form.querySelector('input[name="email"]');
 const messageInput = form.querySelector('textarea[name="message"]');
 const STORAGE_KEY = 'feedback-form-state';
- let feedback = {};
+
 
 emailInput.addEventListener('input', throttle(formInput, 500));
 messageInput.addEventListener('input', throttle(formInput, 500));
 form.addEventListener('submit', formSubmit);
 
 function formInput(event) {
- 
+ let feedback = {};
   const savedFeedback = localStorage.getItem(STORAGE_KEY);
   if (savedFeedback) {
     feedback = JSON.parse(savedFeedback);  
